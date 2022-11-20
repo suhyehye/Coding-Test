@@ -1,0 +1,10 @@
+def solution(s):
+    s = s.lower()
+    y_count = s.count('y')
+    p_count = s.count('p')
+    if y_count == p_count: 
+        answer = True 
+    else: 
+        answer = False
+
+    return answer
