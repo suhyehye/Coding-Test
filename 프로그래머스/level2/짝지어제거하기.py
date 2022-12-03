@@ -1,6 +1,13 @@
 def solution(s):
-    ss = [s[0]]
+    ss = ['0']
     for i in s:
         if i != ss[-1]:
             ss.append(i)
-    return ''.join(ss)
+
+        else:
+            ss.pop(-1)
+            
+    if ''.join(ss[1:]) == '':
+        return 1
+    else:
+        return 0
