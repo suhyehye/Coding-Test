@@ -11,6 +11,5 @@ def solution(people, limit):
             answer += 1
             people.popleft()
         else:
-            answer += 1
-        
+            answer += 1 
     return answer
