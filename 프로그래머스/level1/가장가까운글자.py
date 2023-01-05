@@ -1,11 +1,11 @@
-import numpy as np
+from collections import defaultdict
 def solution(s):
     answer = []
-    s_stack = []
+    s_dict = defaultdict(int)
     for idx,i in enumerate(s):
-        if i in s_stack:
-            answer.append(idx - int(np.where(np.array(s_stack) == i)[-1][-1]))
-        else:
+        if s_dict[i] == 0:
             answer.append(-1)
-        s_stack.append(i)
+        else:
+            answer.append(idx-s_dict[i]+1)
+        s_dict[i] = idx+1
     return answer
