@@ -16,7 +16,6 @@ def solution(dart):
             answer[-1] = answer[-1]*2
             answer.append(eval(nums[i]+points[i][:-1]+'*2'))
             
-            
         else:
             answer.append(eval(nums[i]+points[i]))
     
