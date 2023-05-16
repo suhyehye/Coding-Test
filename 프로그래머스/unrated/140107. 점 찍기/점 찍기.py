@@ -1,5 +1,4 @@
 import math
-import numpy as np
 def solution(k, d):
     answer = 0
     
