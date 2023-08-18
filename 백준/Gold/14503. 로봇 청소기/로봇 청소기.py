@@ -1,44 +1,35 @@
 import sys
 input = sys.stdin.readline
-from collections import deque
+N, M = map(int, input().split())
 
-n,m = map(int,input().split())
-graph = []
-visited = [[0] * m for _ in range(n)]
-r,c,d = map(int,input().split())
+x, y, d = map(int, input().split())
 
-# d => 0,3,2,1 순서로 돌아야한다.
-dx = [-1,0,1,0]
-dy = [0,1,0,-1]
+walls = [list(map(int, input().split())) for _ in range(N)]
+visited = [[0] * M for _ in range(N)]
 
-for _ in range(n):
-    graph.append(list(map(int,input().split())))
+dx = [-1, 0, 1, 0]
+dy = [0, 1, 0, -1]
 
-# 처음 시작하는 곳 방문 처리
-visited[r][c] = 1
 cnt = 1
+visited[x][y] = 1
 
-while 1:
-    flag = 0
-    # 4방향 확인
+while True:
+    c = 0
     for _ in range(4):
-        # 0,3,2,1 순서 만들어주기위한 식
-        nx = r + dx[(d+3)%4]
-        ny = c + dy[(d+3)%4]
-        # 한번 돌았으면 그 방향으로 작업시작
-        d = (d+3)%4
-        if 0 <= nx < n and 0 <= ny < m and graph[nx][ny] == 0:
+        nx = x + dx[(d+3)%4]
+        ny = y + dy[(d+3)%4]
+        d = (d+3) % 4
+        if 0 <= nx < N and 0 <= ny < M and walls[nx][ny] == 0:
             if visited[nx][ny] == 0:
                 visited[nx][ny] = 1
                 cnt += 1
-                r = nx
-                c = ny
-                #청소 한 방향이라도 했으면 다음으로 넘어감
-                flag = 1
+                x, y = nx, ny
+                c = 1
                 break
-    if flag == 0: # 4방향 모두 청소가 되어 있을 때,
-        if graph[r-dx[d]][c-dy[d]] == 1: #후진했는데 벽
+                
+    if c == 0:
+        if walls[x - dx[d]][y - dy[d]] == 1:
             print(cnt)
             break
         else:
-            r,c = r-dx[d],c-dy[d]
+            x,y = x - dx[d], y - dy[d]
