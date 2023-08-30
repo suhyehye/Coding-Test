@@ -1,4 +1,6 @@
 from collections import deque
+import sys
+input = sys.stdin.readline
 N, M, H = map(int, input().split())
 tomatos = [[list(map(int, input().split())) for _ in range(M)] for _ in range(H)]
 
@@ -37,4 +39,4 @@ for i in range(H):
 if flag == False:
     print(-1)
 else:
-    print(ans -1)    
+    print(ans -1)
