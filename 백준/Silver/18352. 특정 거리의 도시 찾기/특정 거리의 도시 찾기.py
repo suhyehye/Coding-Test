@@ -29,4 +29,4 @@ for i in range(1,N+1):
         cnt += 1
         
 if cnt == 0:
-    print(-1)        
+    print(-1)  
