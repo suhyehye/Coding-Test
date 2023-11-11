@@ -9,10 +9,5 @@ def solution(str1, str2):
         return 65536
     c1 = Counter(ar1)
     c2 = Counter(ar2)
-    intersection = 0
-    
-    for k, v in c1.items():
-        if k in c2.keys():
-            intersection += min(c1[k], c2[k])
             
-    return int((intersection/(len(ar1) + len(ar2) - intersection)) * 65536)
+    return int(sum((c1&c2).values()) / sum((c1|c2).values()) * 65536)
