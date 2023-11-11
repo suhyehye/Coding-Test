@@ -1,4 +1,3 @@
-from collections import Counter
 def solution(N, stages):
     total = len(stages)
     count = dict()
@@ -9,5 +8,4 @@ def solution(N, stages):
             total -= tmp
         else:
             count[x] = 0
-    count = sorted(count.items(), key = lambda x:x[1], reverse=True)
-    return [x[0] for x in count]
+    return sorted(count, key=lambda x:count[x], reverse=True)
