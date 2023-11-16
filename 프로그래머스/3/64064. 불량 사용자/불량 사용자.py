@@ -1,4 +1,3 @@
-from collections import defaultdict
 from itertools import product
 def solution(user_id, banned_id):
     arr = []
