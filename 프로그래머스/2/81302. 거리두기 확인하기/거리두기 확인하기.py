@@ -1,6 +1,6 @@
 def check(k, x, y, places):
-    d = [(0,1), (1,0), (0,-1), (-1,0)]
-    for i in range(4):
+    d = [(0,1), (1,0)]
+    for i in range(2):
         nx, ny = x + d[i][0], y + d[i][1]
         if 0 <= nx < 5 and 0 <= ny < 5:
             if places[k][nx][ny] == 'P':
