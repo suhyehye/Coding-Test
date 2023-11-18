@@ -4,13 +4,13 @@ def change_time(x):
 
 def solution(m, musicinfos):
     answer = ["(None)", 0]
-    m = m.replace('G#','W').replace('A#','S').replace('C#', 'X').replace('D#', 'Y').replace("F#",'Z')
+    m = m.replace('G#','g').replace('A#','a').replace('C#', 'c').replace('D#', 'd').replace("F#",'f')
     for music in musicinfos:
         s, e, name, x = music.split(',')
         s = change_time(s)
         e = change_time(e)
         time = e - s
-        x = x.replace('G#','W').replace('A#','S').replace('C#', 'X').replace('D#', 'Y').replace("F#",'Z')
+        x = x.replace('G#','g').replace('A#','a').replace('C#', 'c').replace('D#', 'd').replace("F#",'f')
         x = x * ((time) // len(x)) + x[:(time)%len(x)]
         if m in x and answer[1] < time:
             answer = [name, time]
