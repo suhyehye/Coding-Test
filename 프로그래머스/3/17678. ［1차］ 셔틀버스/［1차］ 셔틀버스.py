@@ -27,8 +27,6 @@ def solution(n, t, m, timetable):
             if cnt >= m:
                 ans = k - 1
                 break
-            if k >= time:
-                ans = time
-                break
+            
             
     return str(ans//60).zfill(2) + ":" + str(ans%60).zfill(2)
