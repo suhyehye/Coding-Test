@@ -1,34 +1,19 @@
-import heapq
-from sys import maxsize
-def dijkstra(start, n):
-    visited = [maxsize] * (n+1)
-    q = []
-    heapq.heapify(q)
-    heapq.heappush(q, (0, start))
-    visited[start] = 0
-    
-    while q:
-        cost, x = heapq.heappop(q)
-        if visited[x] < cost:
-            continue
-        for nx, v in graph[x]:
-            n_cost = cost + v
-            if n_cost < visited[nx]:
-                visited[nx] = n_cost
-                heapq.heappush(q, (n_cost, nx))
-    return visited
 def solution(n, s, a, b, fares):
-    answer = maxsize
-    global graph
-    graph = [[] for _ in range(n+1)]
+    answer = int(1e9)
+    visited = [[int(1e9)] * (n+1) for _ in range(n+1)]
     
-    for x, y, c in fares:
-        graph[x].append([y, c])
-        graph[y].append([x, c])
+    for fare in fares:
+        visited[fare[0]][fare[1]] = fare[2]
+        visited[fare[1]][fare[0]] = fare[2]
     
-    v1 = dijkstra(s, n)
+    for k in range(1, n+1):
+        for i in range(1, n+1):
+            for j in range(1, n+1):
+                visited[i][j] = min(visited[i][j], visited[i][k] + visited[k][j])
+                
     for i in range(1, n+1):
-        v2 = dijkstra(i, n)
-        answer = min(v1[i] + v2[a] + v2[b], answer)
+        visited[i][i] = 0
         
+    for x in range(1, n+1):
+        answer = min(visited[s][x] + visited[x][a] + visited[x][b], answer)
     return answer
